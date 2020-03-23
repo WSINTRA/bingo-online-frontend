@@ -13,27 +13,12 @@ class App extends React.Component {
 state = {
   player: {name:"Willy", wins: 23,},
   allPlayers: []
-
 }
 componentDidMount() {
-//currently fetching first user from django and setting as state
-  fetch("http://localhost:8000/api/1", {
-      method: "GET"
-    }).then(res => res.json()).then(res => 
-      this.setState({
-      player: res,
-    }) );
-
-  fetch("http://localhost:8000/api/", {
-      method: "GET"
-    }).then(res => res.json()).then(res => 
-      this.setState({
-      allPlayers: res,
-    }) );
+  this.setState({
+    player: {...this.props.user}
+  })
 }
-
-
-
 
 
   render(){
@@ -41,6 +26,7 @@ componentDidMount() {
     <div className="App">
       <header className="App-header">
         Willy's Bingo Fun, welcome {this.state.player.name}<br/> since playing you have had {this.state.player.wins} wins
+        <button onClick={()=>this.props.logout()} type="submit" className="btn btn-primary btn-block">logout</button>
         </header>
         <div className="Game-layout">
         <BigBingoBall/>

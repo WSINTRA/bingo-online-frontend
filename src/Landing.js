@@ -14,9 +14,25 @@ class Landing extends Component {
         loggedIn: false,
     }
      loginSubmit=()=>{
-        debugger
         console.log("You have submitted")
-
+        fetch("http://localhost:3050/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify({
+                name: this.state.name,
+                password: this.state.password
+            })
+        }).then(res=> res.json()).then(userData => {
+            localStorage.setItem("myJWT", userData.jwt)
+            this.setState({
+                userData: userData.auth,
+                loggedIn: true
+            })
+          }
+         )
     }
     registerSubmit=()=>{  
             fetch("http://localhost:3050/api/users", {    
@@ -32,7 +48,9 @@ class Landing extends Component {
             }).then(res=> res.json())
             .then(reply=> {
             localStorage.setItem("myJWT", reply.jwt)
-            this.setState({userData:reply.user})
+            this.setState({
+              userData:reply.user,
+              loggedIn: true})
             })
         }
 
@@ -59,11 +77,20 @@ class Landing extends Component {
             })  
         }
     }
+    logout=()=>{
+    console.log("Logged out")
+    localStorage.clear();
+    this.setState({
+      loggedIn: false
+      })
+    }
 
     render() {
         return (
             <Router>
-            {this.state.loggedIn ? <App/> : 
+            {this.state.loggedIn ? <Switch>
+                    <Route exact path='/' render={(props)=><App {...props} logout={this.logout}user={this.state.userData} />}  />
+                    </Switch>: 
              <div className="App">
               <nav className="navbar navbar-expand-lg navbar-light fixed-top">
                 <div className="container">

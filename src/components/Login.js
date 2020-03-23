@@ -27,7 +27,6 @@ class Login extends Component {
                     placeholder="Enter password"  
                     />
                 </div>
-
                 <button onClick={()=>this.props.loginSubmit()} type="submit" className="btn btn-primary btn-block">Submit</button>
 
             </div>
