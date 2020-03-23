@@ -1,8 +1,8 @@
 # idea notes
 
 Multiple users,
-One admin
-Line and a house button
+One gameMaster
+Line and a house button for players and a newBall button for gameMaster
 Random number 1 - 90
 Track every number that comes out,
 Play for a line,

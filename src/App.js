@@ -1,16 +1,41 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import BigBingoBall from './BigBingoBall';
-import AllPlayersInGame from './AllPlayersInGame';
-import PlayerControls from './PlayerControls';
-import BingoBooks from './BingoBooks';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import BigBingoBall from './components/BigBingoBall';
+import AllPlayersInGame from './components/AllPlayersInGame';
+import PlayerControls from './components/PlayerControls';
+import BingoBooks from './components/BingoBooks';
+import PlayedBalls from './components/PlayedBalls'
 
 class App extends React.Component {
 
 state = {
-  player: {name:"Willy", wins: 23, admin:true}
+  player: {name:"Willy", wins: 23,},
+  allPlayers: []
+
 }
+componentDidMount() {
+//currently fetching first user from django and setting as state
+  fetch("http://localhost:8000/api/1", {
+      method: "GET"
+    }).then(res => res.json()).then(res => 
+      this.setState({
+      player: res,
+    }) );
+
+  fetch("http://localhost:8000/api/", {
+      method: "GET"
+    }).then(res => res.json()).then(res => 
+      this.setState({
+      allPlayers: res,
+    }) );
+}
+
+
+
+
+
   render(){
      return (
     <div className="App">
@@ -19,10 +44,12 @@ state = {
         </header>
         <div className="Game-layout">
         <BigBingoBall/>
-        <AllPlayersInGame/>
+        <AllPlayersInGame allPlayers={this.state.allPlayers}/>
         <PlayerControls/>
         <BingoBooks/>
+        <PlayedBalls/>
         </div>
+    
       
     </div>
   );
