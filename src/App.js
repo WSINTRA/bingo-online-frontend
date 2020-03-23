@@ -1,26 +1,33 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import BigBingoBall from './BigBingoBall';
+import AllPlayersInGame from './AllPlayersInGame';
+import PlayerControls from './PlayerControls';
+import BingoBooks from './BingoBooks';
 
-function App() {
-  return (
+class App extends React.Component {
+
+state = {
+  player: {name:"Willy", wins: 23, admin:true}
+}
+  render(){
+     return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        Willy's Bingo Fun, welcome {this.state.player.name}<br/> since playing you have had {this.state.player.wins} wins
+        </header>
+        <div className="Game-layout">
+        <BigBingoBall/>
+        <AllPlayersInGame/>
+        <PlayerControls/>
+        <BingoBooks/>
+        </div>
+      
     </div>
   );
+  }
+ 
 }
 
 export default App;
