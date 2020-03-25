@@ -24,7 +24,7 @@ componentDidMount() {
   render(){
      return (
     <div className="App">
-      <header className="App-header">
+      <header id="welcome-header" className="App-header">
         Willy's Bingo Fun, welcome {this.state.player.name}<br/> since playing you have had {this.state.player.wins} wins
         <button onClick={()=>this.props.logout()} type="submit" className="btn btn-primary btn-block">logout</button>
         </header>

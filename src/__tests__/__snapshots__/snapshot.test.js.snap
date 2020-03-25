@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <header
+      class="App-header"
+    >
+      Willy's Bingo Fun, welcome 
+      <br />
+       since playing you have had  wins
+      <button
+        class="btn btn-primary btn-block"
+        type="submit"
+      >
+        logout
+      </button>
+    </header>
+    <div
+      class="Game-layout"
+    >
+      <div
+        class="Bingo-ball"
+      >
+        <div
+          class="Ball-container"
+        >
+          <img
+            alt=""
+            src="bingoBall.png"
+          />
+          <div
+            class="centered"
+          >
+            23
+          </div>
+        </div>
+        <h3>
+          Two and three, twenty three
+        </h3>
+      </div>
+      <div
+        class="Player-list"
+      >
+        <h1>
+          CURRENT PLAYERS
+        </h1>
+      </div>
+      <div
+        class="Player-controls"
+      >
+        <h1>
+          CONTROLS
+        </h1>
+      </div>
+      <div
+        class="Player-books"
+      >
+        <h1>
+          THIS COMPONENT WILL HOUSE THE BINGO BOOKS EVENTUALLY
+        </h1>
+      </div>
+      <div
+        class="Played-balls"
+      >
+        <h1>
+          THIS COMPONENT WILL HOUSE THE BALLS THAT HAVE BEEN PLAYED
+        </h1>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
